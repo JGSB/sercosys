@@ -6,16 +6,15 @@ import LogoA70 from '../../assets/logoA70.png'
 import { ajustarFechaHora, separateDateAndTimeSis } from "../../util/workDate";
 import { BsFillPeopleFill, BsFillPersonCheckFill, BsFillPersonXFill, BsFillXCircleFill } from "react-icons/bs";
 import { useAuth } from "../../context/AuthContext";
-import type { TypeArrayCliente, TypeArraySucursal, TypeArrayMenu, TypeArrayGerencia, TypePersonalComensal, TypeTipoComensal } from "../../util/types";
+import type { TypeArrayCliente, TypeArraySucursal, TypeArrayMenu, TypePersonalComensal, TypeTipoComensal } from "../../util/types";
 import { Now, obtenerPersonalComensal, obtenerRegistroComensal, obtenerTipoComensal } from "../../consultasDB/apiSupabase";
 
 export default function ControlMenu() {
 
-    const { dataUser, idscliente, idssucursal, idsmenu, idsgerencia } = useAuth();
+    const { dataUser, idscliente, idssucursal, idsmenu } = useAuth();
     const arrayClientes = (idscliente || []) as unknown as TypeArrayCliente[];
     const arraySucursales = (idssucursal || []) as unknown as TypeArraySucursal[];
     const arrayMenus = (idsmenu || []) as unknown as TypeArrayMenu[];
-    const arrayGerencias = (idsgerencia || []) as unknown as TypeArrayGerencia[];
         
     const [ShowSpinner, setShowSpinner] = useState(false)
     const [Aviso, setAviso] = useState(estadoInicialAviso);
@@ -168,11 +167,11 @@ export default function ControlMenu() {
                     formikRef?.current?.setFieldValue('menu', '');
                     formikRef?.current?.setFieldValue('filtromenu', undefined);
                 }else{
-                    let [Hi, Ii, Si] = filteredMenus[0].hora_inicio.split(':');
+                    let [Hi, Ii] = filteredMenus[0].hora_inicio.split(':');
                     const HoraIncio = new Date(ySel,mSel-1,dSel, Hi, Ii);
                     const newHoraIncio = new Date(HoraIncio.getTime());
     
-                    const [Hfin, Mfin, Sfin] = filteredMenus[0].hora_fin.split(':');
+                    const [Hfin, Mfin] = filteredMenus[0].hora_fin.split(':');
                     const HoraFin = new Date(ySel,mSel-1,dSel, Hfin, Mfin);
                     const newHoraFin = new Date(HoraFin.getTime());
     
@@ -256,7 +255,7 @@ export default function ControlMenu() {
             });
 
             if (!response.ok) { throw new Error(`Error en la respuesta: ${response.status}`) }
-            const data = await response.json();
+            //const data = await response.json();
          } catch (error) {
             console.error("Error al obtener datos:", error);
          } finally {
@@ -580,7 +579,7 @@ export default function ControlMenu() {
                     }
                     return errors;
                 }}
-                onSubmit={(values) => {
+                onSubmit={() => {
                     
                 }}
             >
@@ -622,7 +621,7 @@ export default function ControlMenu() {
                                                         value={values.fecha}
                                                         onChange={(e)=>{handleChange(e)}}
                                                         onBlur={(e)=>{handleBlur(e)}}
-                                                        onClick={(e) => {
+                                                        onClick={() => {
                                                             !dataUser?.V_T && arrayClientes.length === 1 ? values.cliente: values.cliente=""
                                                             values.sucursal=""
                                                             values.menu=""
@@ -651,7 +650,7 @@ export default function ControlMenu() {
                                                             value={values.cliente}
                                                             onChange={(e) => { handleChange(e); ChangeCliente(e)}}
                                                             onBlur={(e)=>{handleBlur(e)}}
-                                                            onClick={(e) => {
+                                                            onClick={() => {
                                                                 values.sucursal=""
                                                                 values.menu=""
                                                                 setArrayMenus([])
@@ -678,7 +677,7 @@ export default function ControlMenu() {
                                                             value={values.sucursal}
                                                             onChange={(e) => { handleChange(e); ChangeSucursal(e)}}
                                                             onBlur={(e)=>{handleBlur(e)}}
-                                                            onClick={(e) => {
+                                                            onClick={() => {
                                                                 values.menu=""
                                                             }}
                                                     >

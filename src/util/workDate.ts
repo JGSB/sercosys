@@ -1,9 +1,9 @@
-const WeekDaysCor = ['do','lu','ma','mi','ju','vi','sa'];
+//const WeekDaysCor = ['do','lu','ma','mi','ju','vi','sa'];
 const WeekDaysCom = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 const WeekDaysComEst = ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
-const MonthsLetCor = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+//const MonthsLetCor = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
 const MonthsLetCom = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const MonthsNum = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+//const MonthsNum = ['01','02','03','04','05','06','07','08','09','10','11','12'];
 
 export const ajustarFechaHora = (now: Date) => {
   const cuatroHoras = 4 * 60 * 60 * 1000;

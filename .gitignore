@@ -25,3 +25,11 @@ dist-ssr
 
 # Environment variables
 .env
+
+# Excel files
+*.xls
+*.xlsx
+# Temporary files
+*.tmp
+*.temp
+*.bak

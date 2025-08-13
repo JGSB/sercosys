@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useAuth } from '../context/AuthContext';
 import Spinner from './modal/Spinner';
 import { Formik } from 'formik';
@@ -59,7 +59,7 @@ export default function Login() {
                 
             }}
           >
-          {({ isSubmitting, values, touched, errors, handleChange, handleBlur, handleSubmit, resetForm }) => {                  
+          {({ isSubmitting, values, touched, errors, handleChange, handleBlur, handleSubmit}) => {                  
             
             return (
               isSubmitting ? (

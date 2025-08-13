@@ -46,7 +46,7 @@ export default function CoberturaDePuesto() {
     const [ArrayEstructura, setArrayEstructura] = useState<any[]>([]);
     const [ArrayEstatusPuesto, setArrayEstatusPuesto] = useState<TypeEstatusPuesto[]>([]);
     const [ArrayCobertura, setArrayCobertura] = useState<any[]>([]);
-    const [SelectedPersonal, setSelectedPersonal] = useState<any[]>([]);
+    //const [SelectedPersonal, setSelectedPersonal] = useState<any[]>([]);
     const [ArraySucursales, setArraySucursales] = useState<any[]>([]);
 
     interface CargarPuesto {
@@ -256,7 +256,7 @@ export default function CoberturaDePuesto() {
                         setArrayEstructura((estructuraData as { estructurasFiltradas: any[] }).estructurasFiltradas)
                         setArraySucursales((estructuraData as { sucursales: any[] }).sucursales)
                         setArrayCobertura(coberturaData as any[]);
-                        setSelectedPersonal((coberturaData as any[]).map((cobertura: any) => cobertura.id_personal));
+                        //setSelectedPersonal((coberturaData as any[]).map((cobertura: any) => cobertura.id_personal));
                         setTableCoincidencia(true);
                     } catch (err) {
                         setTableCoincidencia(false);
@@ -284,7 +284,7 @@ export default function CoberturaDePuesto() {
                             obtenerCobertura(Number(cliente), 16, String(fecha))
                         ]);
                         setArrayCobertura(coberturaData as any[]);
-                        setSelectedPersonal((coberturaData as any[]).map((cobertura: any) => cobertura.id_personal));
+                        //setSelectedPersonal((coberturaData as any[]).map((cobertura: any) => cobertura.id_personal));
                         setTableCoincidencia(true);
                     } catch (err) {
                         setTableCoincidencia(false);
@@ -474,7 +474,7 @@ export default function CoberturaDePuesto() {
                                                 value={values.fecha}
                                                 onChange={(e)=>{handleChange(e)}}
                                                 onBlur={(e)=>{handleBlur(e)}}
-                                                onClick={(e) => {
+                                                onClick={() => {
                                                     !dataUser?.V_T && arrayClientes.length === 1 ? values.cliente: values.cliente=""
                                                     values.hentrada=""
                                                     values.hsalida=""
@@ -497,7 +497,7 @@ export default function CoberturaDePuesto() {
                                                 value={values.hentrada}
                                                 onChange={(e)=>{handleChange(e)}}
                                                 onBlur={(e)=>{handleBlur(e)}}
-                                                onClick={(e) => {
+                                                onClick={() => {
                                                     !dataUser?.V_T && arrayClientes.length === 1 ? values.cliente: values.cliente=""
                                                     values.hsalida=""
                                                     setTableCoincidencia(false)
@@ -520,7 +520,7 @@ export default function CoberturaDePuesto() {
                                                 value={values.hsalida}
                                                 onChange={(e)=>{handleChange(e); ChangeSalida(e)}}
                                                 onBlur={(e)=>{handleBlur(e)}}
-                                                onClick={(e) => {
+                                                onClick={() => {
                                                     !dataUser?.V_T && arrayClientes.length === 1 ? values.cliente: values.cliente=""
                                                     setTableCoincidencia(false)
                                                     
@@ -695,7 +695,7 @@ export default function CoberturaDePuesto() {
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            {ArrayEstructura.filter(e => e.idsucursal === sucursal.id).map((estructura, j) => {
+                                                                            {ArrayEstructura.filter(e => e.idsucursal === sucursal.id).map((estructura) => {
                                                                                 const timePartE = estructura.h_entrada.split(':');
                                                                                 const timePartS = estructura.h_salida.split(':');
                                                                                 const [hE, mE] = timePartE.map(Number);
@@ -811,7 +811,7 @@ export default function CoberturaDePuesto() {
                                                                                                     value={values.estatus}
                                                                                                     onChange={e => { handleChange(e); ChangeStatus(e); }}
                                                                                                     onBlur={(e) => handleBlur(e)}
-                                                                                                    onClick={(e) => {
+                                                                                                    onClick={() => {
                                                                                                         values.colaborador = ""
                                                                                                     }}
                                                                                                 >

@@ -27,7 +27,7 @@ export default function RelacionSolicitudComensalInterno() {
         usuario: number | undefined;
     }> | null>(null);
     
-    const [ArraySucursales, setArraySucursales] = useState<any[]>([]);
+    //const [ArraySucursales, setArraySucursales] = useState<any[]>([]);
     
     interface Personal {
         nrocedula: number | string;
@@ -38,7 +38,7 @@ export default function RelacionSolicitudComensalInterno() {
         gerencia: TypeGerencia;
     }
     const [ArrayPersonal, setArrayPersonal] = useState<Personal[]>([]);
-    const [ArrayMenus, setArrayMenus] = useState<any[]>([]);
+    //const [ArrayMenus, setArrayMenus] = useState<any[]>([]);
     const [horaActual, setHoraActual] = useState<{ fechaSisA: Date; fechaSisB: Date; dSis: string; mSis: string; ySis: string; hSis: string; iSis: string }>({
         fechaSisA: new Date(),
         fechaSisB: new Date(),
@@ -56,13 +56,13 @@ export default function RelacionSolicitudComensalInterno() {
         formikRef?.current?.setFieldValue('cliente', e.target.value);
 
         const selectedClienteId = e.target.value;
-        let filteredSucursales: any[] = [];
+        //let filteredSucursales: any[] = [];
 
         if (selectedClienteId !== "") {
-            const clienteIdNum = parseInt(selectedClienteId, 10);
-            filteredSucursales = arraySucursales.filter(element => element.idcliente === clienteIdNum);
+            //const clienteIdNum = parseInt(selectedClienteId, 10);
+            //filteredSucursales = arraySucursales.filter(element => element.idcliente === clienteIdNum);
         }
-        setArraySucursales(filteredSucursales);
+        //setArraySucursales(filteredSucursales);
         setVolcado(true)
     }    
     
@@ -600,7 +600,7 @@ export default function RelacionSolicitudComensalInterno() {
                     }
                     return errors;
                 }}
-                onSubmit={async (values, {resetForm}) => {
+                onSubmit={async () => {
                     return null
                 }}
             >
@@ -630,10 +630,10 @@ export default function RelacionSolicitudComensalInterno() {
                                                     values.sucursal=""
                                                     values.menu=""
                                                     if (arrayClientes.length > 1) {
-                                                        setArraySucursales([])
-                                                        setArrayMenus([])
+                                                        //setArraySucursales([])
+                                                        //setArrayMenus([])
                                                     }else{
-                                                        setArrayMenus([])
+                                                        //setArrayMenus([])
                                                     }
                                                     setSelMenu("")
                                                     setSelSucursal([])
@@ -657,10 +657,10 @@ export default function RelacionSolicitudComensalInterno() {
                                                     value={values.cliente}
                                                     onChange={(e) => { handleChange(e); ChangeCliente(e)}}
                                                     onBlur={(e)=>{handleBlur(e)}}
-                                                    onClick={(e) => {
+                                                    onClick={() => {
                                                         values.sucursal=""
                                                         values.menu=""
-                                                        setArrayMenus([])
+                                                        //setArrayMenus([])
                                                         setSelMenu("")
                                                         setSelSucursal([])
                                                         setTableCoincidencia(false)

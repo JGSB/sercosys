@@ -1,5 +1,5 @@
 import { Formik, type FormikProps } from "formik";
-import { useState, useRef, useEffect, type ChangeEvent, type JSXElementConstructor, type ReactElement, type ReactNode, type ReactPortal } from "react";
+import { useState, useRef, useEffect, type ChangeEvent } from "react";
 import { useAuth } from "../../context/AuthContext";
 import type { TypeArrayCliente, TypeArraySucursal, TypeFichaMenu, TypePlanificacionMenu } from "../../util/types";
 import Spinner from "../modal/Spinner";
@@ -58,7 +58,7 @@ export default function PlanificacionMenu() {
     const CerrarAviso = () => {
         setAviso({...estadoInicialAviso})
         setViewCargarMenu({...estadoInicialCargarMenu})
-        setViewCantidad(false);        
+        //setViewCantidad(false);        
         formikRef?.current?.setFieldValue('fecha', '');
         formikRef?.current?.setFieldValue('tipomenu', '');
         formikRef?.current?.setFieldValue('partemenu', '');
@@ -82,7 +82,7 @@ export default function PlanificacionMenu() {
     const [ArrayFichaMenu, setArrayFichaMenu] = useState<TypeFichaMenu[]>([]);
     const [ArrayPlanificacionMenu, setArrayPlanificacionMenu] = useState<any[]>([]);
     const [ViewCargarMenu, setViewCargarMenu] = useState<ViewCargarMenu>(estadoInicialCargarMenu);
-    const [ViewCantidad, setViewCantidad] = useState(false);
+    //const [ViewCantidad, setViewCantidad] = useState(false);
 
     const ChangeCliente = (e: ChangeEvent<HTMLSelectElement>) => {
         formikRef?.current?.setFieldValue('cliente', e.target.value);
@@ -293,16 +293,16 @@ export default function PlanificacionMenu() {
         fetchData();
     }
 
-    const setSelFichaMenu = ( e: React.ChangeEvent<HTMLSelectElement>, cantidad: boolean ) => {
+    /* const setSelFichaMenu = ( e: React.ChangeEvent<HTMLSelectElement>, cantidad: boolean ) => {
         const value = e.target.value;
 
         if (value === "" || !cantidad) {
-            setViewCantidad(false);
+            //setViewCantidad(false);
             formikRef?.current?.setFieldValue('cantidad', "0");
         } else {
-            setViewCantidad(true);
+            //setViewCantidad(true);
         }
-    };
+    }; */
 
     if (!dataUser) {
         return <Spinner show={true} />
@@ -384,7 +384,7 @@ export default function PlanificacionMenu() {
                         console.error('Error:', error);
                     } finally {
                         setViewCargarMenu({ ...estadoInicialCargarMenu });
-                        setViewCantidad(false);
+                        //setViewCantidad(false);
                         setVolcado2(true)
                     }
                 }}
@@ -468,7 +468,7 @@ export default function PlanificacionMenu() {
                                                 values.fichamenu=""
                                                 values.cantidad=""
                                                 setViewCargarMenu({ ...estadoInicialCargarMenu });
-                                                setViewCantidad(false);
+                                                //setViewCantidad(false);
                                             }}
                                             
                                         >

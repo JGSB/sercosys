@@ -11,7 +11,7 @@ export default function LayoutModulo({ pathname }: TypeLayoutModuloProps) {
     const hasPermission = (dataUser: Record<string, any> | undefined, permissions: string[]) =>
     !!dataUser && permissions.some((perm) => dataUser[perm]);
     const navigate = useNavigate();
-    const [ShowSpinner, setShowSpinner] = useState(false);
+    const [ShowSpinner] = useState(false);
     const { dataUser } = useAuth();
     const isBaseRoute = (
         pathname === "/home/configuracion" || 

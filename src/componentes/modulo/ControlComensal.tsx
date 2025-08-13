@@ -4,7 +4,7 @@ import AvisoModal, { estadoInicialAviso } from "../modal/AvisoModal";
 import Spinner from "../modal/Spinner";
 import LogoA70 from '../../assets/logoA70.png'
 import { BsFill1SquareFill, BsFill2SquareFill, BsFill3SquareFill, BsFill4SquareFill, BsFill5SquareFill, BsFill6SquareFill, BsFill7SquareFill, BsFill8SquareFill, BsFill9SquareFill, BsFill0SquareFill, BsFillXCircleFill } from "react-icons/bs";
-import type { TypeArrayCliente, TypeArrayMenu, TypeArraySucursal, TypeCargo, TypeGerencia, TypePersonalComensal, TypeTipoComensal } from "../../util/types";
+import type { TypeArrayCliente, TypeArrayMenu, TypeArraySucursal, TypePersonalComensal } from "../../util/types";
 import { useAuth } from "../../context/AuthContext";
 import { ajustarFechaHora } from "../../util/workDate";
 import { agregarControlComensal, Now, obtenerPersonalComensal } from "../../consultasDB/apiSupabase";
@@ -150,11 +150,11 @@ export default function ControlComensal() {
                 formikRef?.current?.setFieldValue('menu', '');
                 formikRef?.current?.setFieldValue('filtromenu', '');
             }else{
-                let [Hi, Ii, Si] = filteredMenus[0].hora_inicio.split(':');
+                let [Hi, Ii] = filteredMenus[0].hora_inicio.split(':');
                 const HoraIncio = new Date(ySel,mSel-1,dSel, Hi, Ii);
                 const newHoraIncio = new Date(HoraIncio.getTime());
 
-                const [Hfin, Mfin, Sfin] = filteredMenus[0].hora_fin.split(':');
+                const [Hfin, Mfin] = filteredMenus[0].hora_fin.split(':');
                 const HoraFin = new Date(ySel,mSel-1,dSel, Hfin, Mfin);
                 const newHoraFin = new Date(HoraFin.getTime());
 
@@ -446,11 +446,11 @@ export default function ControlComensal() {
                         formikRef?.current?.setFieldValue('menu', '');
                         setShowTeclado(false)
                     }else{
-                        let [Hi, Ii, Si] = filtromenuParsed.hora_inicio.split(':');
+                        let [Hi, Ii] = filtromenuParsed.hora_inicio.split(':');
                         const HoraIncio = new Date(Number(ySel),Number(mSel)-1,Number(dSel), Hi, Ii);
                         const newHoraIncio = new Date(HoraIncio.getTime());
 
-                        const [Hfin, Mfin, Sfin] = filtromenuParsed.hora_fin.split(':');
+                        const [Hfin, Mfin] = filtromenuParsed.hora_fin.split(':');
                         const HoraFin = new Date(Number(ySel),Number(mSel)-1,Number(dSel), Hfin, Mfin);
                         const newHoraFin = new Date(HoraFin.getTime());
 

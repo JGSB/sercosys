@@ -5,7 +5,7 @@ import HeaderNav from './HeaderNav'
 
 
 export default function Header() {
-    const { user, dataUser } = useAuth()
+    const { user } = useAuth()
     return (
         <nav className="w-full flex justify-center border-b border-b-foreground/10 h-18">
             <div className="w-full max-w-6xl flex justify-between items-center px-1 text-sm m-2">

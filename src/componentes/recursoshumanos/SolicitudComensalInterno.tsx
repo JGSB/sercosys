@@ -167,7 +167,7 @@ export default function SolicitudComensalInterno() {
                         }
                         const hHT = padToTwoDigits(newHoraTope.getHours());
                         const iHT = padToTwoDigits(newHoraTope.getMinutes());
-                        const sHT = padToTwoDigits(newHoraTope.getSeconds());
+                        //const sHT = padToTwoDigits(newHoraTope.getSeconds());
                         
                         const fechaSelB=new Date(ySel,mSel-1,dSel, hHT, iHT)
                         fechaSelB.setDate(fechaSelB.getDate() - Restar);
@@ -500,7 +500,7 @@ export default function SolicitudComensalInterno() {
                         }
                         const hHT = padToTwoDigits(newHoraTope.getHours());
                         const iHT = padToTwoDigits(newHoraTope.getMinutes());
-                        const sHT = padToTwoDigits(newHoraTope.getSeconds());
+                        //const sHT = padToTwoDigits(newHoraTope.getSeconds());
 
                         const fechaSelB=new Date(Number(ySel),Number(mSel)-1,Number(dSel), hHT, iHT)
                         fechaSelB.setDate(fechaSelB.getDate() - Restar);

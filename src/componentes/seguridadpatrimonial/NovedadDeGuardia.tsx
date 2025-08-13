@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Formik, type FormikProps } from 'formik';
 import { BsFillCloudUploadFill, BsFillTrashFill, BsFillPrinterFill } from 'react-icons/bs';
 import type { TypeArrayCliente, TypeArraySucursal } from '../../util/types';
-import { ajustarFechaHora, separateDateAndTimeSis } from '../../util/workDate';
 import { useAuth } from '../../context/AuthContext';
 import AvisoModal, { estadoInicialAviso } from '../modal/AvisoModal';
 import Spinner from '../modal/Spinner';
@@ -31,11 +30,11 @@ export default function NovedadesDeGuardia() {
     const [Volcado, setVolcado] = useState(false);
     const [ArrayNovedad, setArrayNovedad] = useState<any[]>([]);
 
-    interface TipoStatus {
+    /* interface TipoStatus {
         show: boolean;
         valor: number | string;
-    }
-    const [TipoStatus, setTipoStatus] = useState<TipoStatus>({ show: false, valor: "" });
+    } */
+    //const [TipoStatus, setTipoStatus] = useState<TipoStatus>({ show: false, valor: "" });
 
     const CerrarAviso = () => {
         setAviso({...estadoInicialAviso})
@@ -245,7 +244,7 @@ export default function NovedadesDeGuardia() {
                     }
                 }}
             >
-                {({isSubmitting, values, touched, errors, handleChange, handleBlur, handleSubmit, resetForm, setFieldValue }) => { 
+                {({isSubmitting, values, touched, errors, handleChange, handleBlur, handleSubmit }) => { 
 
                     return(
                         isSubmitting ? (
